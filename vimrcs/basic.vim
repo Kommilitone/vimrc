@@ -44,14 +44,11 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-
+map <C-e> <Plug>(easymotion-bd-w)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -381,4 +378,95 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-set rnu
+if has("gui_macvim")
+  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to 
+  " the right side. Ctrl-Shift-Tab goes the other way.
+  noremap <C-Tab> :tabnext<CR>
+  noremap <C-S-Tab> :tabprev<CR>
+
+  " Switch to specific tab numbers with Command-number
+  noremap <D-1> :tabn 1<CR>
+  noremap <D-2> :tabn 2<CR>
+  noremap <D-3> :tabn 3<CR>
+  noremap <D-4> :tabn 4<CR>
+  noremap <D-5> :tabn 5<CR>
+  noremap <D-6> :tabn 6<CR>
+  noremap <D-7> :tabn 7<CR>
+  noremap <D-8> :tabn 8<CR>
+  noremap <D-9> :tabn 9<CR>
+  " Command-0 goes to the last tab
+  noremap <D-0> :tablast<CR>
+endif
+
+map o $a<Enter><esc>
+
+map O k$a<Enter><esc>
+
+map <C-d> 20j
+map <C-u> 20k
+
+if has("gui_macvim")
+    " Press Ctrl-Tab to switch between open tabs (like browser tabs) to
+    " the right side. Ctrl-Shift-Tab goes the other way.
+    noremap <C-Tab> :tabnext<CR>
+    noremap <C-S-Tab> :tabprev<CR>
+
+    " Switch to specific tab numbers with Command-number
+    noremap <D-1> :tabn 1<CR>
+    noremap <D-2> :tabn 2<CR>
+    noremap <D-3> :tabn 3<CR>
+    noremap <D-4> :tabn 4<CR>
+    noremap <D-5> :tabn 5<CR>
+    noremap <D-6> :tabn 6<CR>
+    noremap <D-7> :tabn 7<CR>
+    noremap <D-8> :tabn 8<CR>
+    noremap <D-9> :tabn 9<CR>
+    " Command-0 goes to the last tab
+    noremap <D-0> :tablast<CR>
+endif
+
+map <leader>w <Esc>:w<cr>
+map <leader>q <Esc>:q<cr>
+nmap <C-p> :NERDTreeToggle<CR>
+set nofoldenable
+
+map <leader>1 :tabn 1<CR>
+map <leader>2 :tabn 2<CR>
+map <leader>3 :tabn 3<CR>
+map <leader>4 :tabn 4<CR>
+map <leader>5 :tabn 5<CR>
+map <leader>6 :tabn 6<CR>
+map <leader>7 :tabn 7<CR>
+map <leader>8 :tabn 8<CR>
+map <leader>9 :tabn 9<CR>
+map <leader>0 :tablast<CR>
+
+map L gt
+map H gT
+
+map <C-t> :tabnew<CR>
+
+:set colorcolumn=100
+:set cursorline
+
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+set switchbuf=useopen
+
+let g:ackpreview = 1
+
+let g:javascript_plugin_flow = 1
+
+let b:ale_linters = {'javascript': ['eslint']}
+let b:ale_fixers = {'javascript': ['eslint']}
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_text_changed = 1
+
+set diffopt+=vertical
+
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprevious<CR>
+
+let g:vue_disable_pre_processors=1

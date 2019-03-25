@@ -186,12 +186,4 @@ nnoremap <silent> <Plug>yankstack_after_paste :call <SID>after_paste()<CR>
 xnoremap <silent> <Plug>yankstack_after_paste :<C-u>call <SID>after_paste()<CR>
 inoremap <silent> <Plug>yankstack_after_paste <C-o>:call <SID>after_paste()<CR>
 
-if !exists('g:yankstack_map_keys') || g:yankstack_map_keys
-  nmap <M-p> <Plug>yankstack_substitute_older_paste
-  xmap <M-p> <Plug>yankstack_substitute_older_paste
-  imap <M-p> <Plug>yankstack_substitute_older_paste
-  nmap <M-P> <Plug>yankstack_substitute_newer_paste
-  xmap <M-P> <Plug>yankstack_substitute_newer_paste
-  imap <M-P> <Plug>yankstack_substitute_newer_paste
-endif
 
